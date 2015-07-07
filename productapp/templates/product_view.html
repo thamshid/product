@@ -1,0 +1,41 @@
+{% include "header.html" %}
+{% load staticfiles %}
+<script>
+	function validateForm(){
+		var x = document.forms["comment"]["cmnt"].value;
+    if (x == null || x == "") {
+        alert("Write your comment");
+        return false;
+    }
+	}
+</script>
+
+<div id="product_page">
+<div id="product_discription">
+<h1>{{products.product_name}}</h1>
+<h2>Category:{{category}}</h2>
+
+<img src="/static/product_images/{{products.product_id}}.jpg"%>
+<h3>Key features</h3>
+{% for f in features%}
+	<span>{{f}}</span></br>
+{%endfor%}
+</div>
+<div id="comment_view">
+<h2>Comments</h2>
+{%for cmt in coment%}
+	<b>{{cmt.username}}</b>
+	<p>{{cmt.comment_discription|linebreaks}}</p>
+{%endfor%}
+<form action="" method="post" name="comment" onsubmit="return validateForm()">
+
+	<span><textarea name="cmnt"></textarea></span>
+	<span><input type="submit" value="Submit" id="add_comment_button"></span>
+</form>
+</div>
+{%if admin%}
+<a href="/product/dashboard/products/delete/{{pid}}"><button id="delete_button">Delete product</button></a>
+</div>
+</div>
+{%endif%}
+{% include "footer.html" %}

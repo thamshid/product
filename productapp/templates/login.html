@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href={% static 'css/mystyle.css'%}>
+    <title>Login</title>
+</head>
+<script>
+function validateForm() {
+    var x = document.forms["login_form"]["username"].value;
+    if (x == null || x == "") {
+        alert("Username must be filled out");
+        return false;
+    }
+    var y = document.forms["login_form"]["password"].value;
+    if (y == null || y == "") {
+        alert("Password must be filled out");
+        return false;
+    }
+
+}
+</script>
+<div id="login_container">
+<div id="login_form_div">
+<span>Login</span>
+<form action="" onsubmit="return validateForm()" method="POST"  name="login_form" class="login_form">
+    <div><input type='text' name='username' placeholder="username"></div>
+    <div><input type="password" name="password" placeholder="Password" ></div>
+    {{error}}
+    <div><input type="submit" value="Login" id="login_button"></div>
+    <a href='/product/signup'>New user click here</a>
+    
+</form>
+</div>
+</div>

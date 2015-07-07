@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href={% static 'css/mystyle.css'%}>
+    <title>Signup</title>
+</head>
+<script>
+function validateForm() {
+	var x = document.forms["signup_form"]["name"].value;
+    if (x == null || x == "") {
+        alert("Name must be filled out");
+        return false;
+
+    }
+
+    var y = document.forms["signup_form"]["email"].value;
+    if (y == null || y == "") {
+        alert("Email must be filled out");
+        return false;
+    }
+    var x = document.forms["signup_form"]["username"].value;
+    if (x == null || x == "") {
+        alert("Username must be filled out");
+        return false;
+    }
+    if(x.length<6){
+    	alert("Username must contain minimum 6 charecter");
+        return false;
+    }
+    var y = document.forms["signup_form"]["password"].value;
+    if (y == null || y == "") {
+        alert("Password must be filled out");
+        return false;
+    }
+    if(y.length<6){
+    	alert("Password must contain minimum 6 charecter");
+        return false;
+    }
+
+}
+</script>
+<div id="login_container">
+<div id="login_form_div">
+<span>Signup</span>
+<form action="" onsubmit="return validateForm()" method="POST" name="signup_form" class="login_form">
+    <div><input type='text' name='name' placeholder="Name" ></div>
+    <div><input type='text' name='email' placeholder="Email" ></div>
+    <div><input type='text' name='username' placeholder="Username" ></div>
+    <div><input type="password" name="password" placeholder="Password" ></div>
+    {{error}}
+    <div><input type="submit" value="Signup" id="signup_button"></div>
+</form>
+<a href='/product/login'>login here</a>
+</div>
+</div>

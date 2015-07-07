@@ -1,0 +1,12 @@
+
+
+{% include "header.html" %}
+
+<div class="products">
+<div id='noitem'>{{noitem}}</div>
+{%for p in products %}
+	<div class="product_view"><a href="/product/dashboard/products/{{p.product_id}}"><img src="/static/product_images/{{p.product_id}}.jpg" class="product_img"> <span>{{p.product_name}}</span></a></div>
+{%endfor%}
+</div>
+</div>
+{% include "footer.html" %}

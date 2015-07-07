@@ -1,0 +1,31 @@
+{% include "header.html" %}
+<script>
+function validateForm() {
+    var x = document.forms["product_add_form"]["productname"].value;
+    if (x == null || x == "") {
+        alert("Product name must be filled out");
+        return false;
+    }
+
+
+}
+</script>
+<ul id="product_add_cont">
+<form action="" method="post" enctype="multipart/form-data" name="product_add_form" onsubmit="return validateForm()">
+<li>Product Name:<input type="text" name="productname"></li>
+ <li>Category:<select name='productcat'>
+{%for c in cat %}
+  <option value="{{c.cat_id}}">{{c.cat_path}}</option>
+{%endfor%}
+</select>
+</li>
+<li>
+{{form}}
+</li>
+<li>
+	Features:<textarea name="feature"></textarea>
+</li>
+<input type="submit" value="Add Product" id='add_product_button'>
+</form>
+</div>
+{% include "footer.html" %}

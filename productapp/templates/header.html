@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href={% static 'css/mystyle.css'%}>
+	<title>Product</title>
+</head>
+<body>
+	
+	<div id='header'>
+		<div class="logo"><a href=""><img src="{% static 'images/logo.png'%}"></a></div>
+		<form id="search_form" action="/product/dashboard/search/" method="post">
+		<input type="text" placeholder="Search" name="word">
+		<input type="submit" value="Search" id="search_button">
+		</form>
+		<nav id='heder_nav' class='nav'>
+			<ul class='main_nav'>
+				<li><a href='/product/dashboard'>Home</a></li>
+				<li><a href='/product/dashboard/profile'>profile</a></li>
+				<li><a href='/product/logout'>logout</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div class="container">

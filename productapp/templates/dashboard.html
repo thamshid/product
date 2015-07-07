@@ -1,0 +1,24 @@
+
+
+{% include "header.html" %}
+<div class='main_cat'>
+	{% for cat in category %}
+			
+			<ul id="cat_head">{%if cat.0.parent %}<a href="/product/dashboard/{{cat.0.pathp}}" ><button id="cat_menu">{{cat.0.parent_name}}</button></a>{%else%}<button id="cat_menu">{{par_name}}{%endif%}</button>
+			<div>
+			{% for c in cat %}
+				<li><a href="/product/dashboard/{{c.pathp}}/{{c.cat_id}}"> <button id="subcat_menu">{{c.cat_name}}</button></a></li>
+			{% endfor %}
+			</div>
+		</ul>
+		
+	{% endfor %}
+</div>
+<div class="products">
+<div id='noitem'>{{noitem}}</div>
+{%for p in products %}
+	<div class="product_view"><a href="/product/dashboard/products/{{p.product_id}}"><img src="/static/product_images/{{p.product_id}}.jpg" class="product_img"> <span>{{p.product_name}}</span></a></div>
+{%endfor%}
+</div>
+</div>
+{% include "footer.html" %}

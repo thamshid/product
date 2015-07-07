@@ -1,0 +1,33 @@
+{% include "header.html" %}
+<script type="text/javascript">
+function validateForm() {
+    var x = document.forms["profile_form"]["name"].value;
+    if (x == null || x == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+    if (x.length<4) {
+    	alert("Name must contain 4 charecter");
+        return false;
+    }
+    var y = document.forms["profile_form"]["email"].value;
+    if (y == null || y == "") {
+        alert("Password must be filled out");
+        return false;
+    }
+    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    if(!re.test(y)){
+    	alert("Incorrect email");
+    	return false;
+    }
+
+}
+</script>
+<div id='profile_page'>
+<form id='profile_form' action="" method="post" onsubmit="return validateForm()">
+<span>Name:<input type="txt" value="{{detail.name}}" name="name"></span></br>
+<span>Email:<input type="text" value="{{detail.email}}" name="email"></span>
+<span><input type="submit" value="Save" id="profile_save_button"></span>
+</form>
+</div>
+{% include "footer.html" %}
